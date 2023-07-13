@@ -45,6 +45,12 @@ class AdminController extends Controller
         }
     }
 
+    function logoutHandler(Request $request) {
+        Auth::guard('admin')->logout();
+        session()->flash('fail', 'You are logged out!');
+        return redirect()->route('admin.login');
+    }
+
     /**
      * Display a listing of the resource.
      */
